@@ -1,0 +1,97 @@
+.chats {
+  margin-top: 2px;
+}
+
+.chatsItem {
+  padding: 9px 18px;
+  display: grid;
+  grid-template-columns: 44px 1fr auto;
+  gap: 7px 12px;
+  grid-template-areas:
+    "image-box name last-seen"
+    "image-box msg-text status";
+
+  &:nth-child(odd) {
+    background-color: #FFF;
+  }
+
+  &:nth-child(even) {
+    background-color: #FBFBFB;
+  }
+
+  &:has(.chatsItem-status.unread) {
+    .chatsItem-text {
+      color: #000;
+    }
+  }
+}
+
+.chatsItem-imageBox {
+  grid-area: image-box;
+
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: #E6E6E6FF;
+
+  grid-row-start: 1;
+  grid-row-end: 3;
+}
+
+.chatsItem-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.chatsItem-name {
+  grid-area: name;
+
+  color: #141522;
+  font-size: 13px;
+  line-height: 1.5;
+  font-weight: 600;
+}
+
+.chatsItem-lastSeen {
+  grid-area: last-seen;
+  align-self: center;
+  justify-self: end;
+
+  font-size: 11px;
+  line-height: 13px;
+  color: #8E92BC;
+}
+
+.chatsItem-text {
+  grid-area: msg-text;
+
+  font-size: 11px;
+  line-height: 13px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  color: #8E92BC;
+}
+
+.chatsItem-status {
+  display: block;
+  grid-area: status;
+  align-self: center;
+  justify-self: end;
+
+  &.seen {
+    width: 16px;
+    height: 16px;
+    background: url("../../images/icon--chat-seen.svg") center center no-repeat;
+  }
+
+  &.unread {
+    width: 8px;
+    height: 8px;
+    background-color: #DB5962;
+    border-radius: 50%;
+    margin: auto 5px;
+  }
+}
